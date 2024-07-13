@@ -1,3 +1,4 @@
+import { TasksServiceToken } from './../../../../main';
 import { Component, computed, inject, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -13,7 +14,7 @@ import { TasksService } from '../../tasks.service';
 })
 export class TaskItemComponent {
   task = input.required<Task>();
-  private tasksService = inject(TasksService);
+  private tasksService = inject<TasksService>(TasksServiceToken);
 
   taskStatus = computed(() => {
     switch (this.task().status) {
